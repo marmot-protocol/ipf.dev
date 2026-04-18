@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Donate · Internet Privacy Foundation</title>
+  <meta name="description" content="Support the Internet Privacy Foundation via Lightning.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>">
+
+  <link rel="preload" href="../fonts/Supreme-Variable.ttf" as="font" type="font/ttf" crossorigin>
+  <script defer src="https://analytics.ipf.dev/script.js" data-website-id="942e1c4a-cc82-4c41-864c-cc44f70cee8e"></script>
+
+  <style>
+    @font-face {
+      font-family: 'Supreme';
+      src: url('../fonts/Supreme-Variable.ttf') format('truetype-variations'),
+           url('../fonts/Supreme-Variable.ttf') format('truetype');
+      font-weight: 200 800;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'Supreme';
+      src: url('../fonts/Supreme-VariableItalic.ttf') format('truetype-variations'),
+           url('../fonts/Supreme-VariableItalic.ttf') format('truetype');
+      font-weight: 200 800;
+      font-style: italic;
+      font-display: swap;
+    }
+
+    :root {
+      --bg: #000000;
+      --text: #ffffff;
+      --text-muted: #8a8a8a;
+      --accent: #2f5bff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+    }
+
+    body {
+      font-family: 'Supreme', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      padding: 2rem;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      max-width: 900px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    h1 {
+      font-family: 'Supreme', system-ui, sans-serif;
+      font-size: clamp(2.25rem, 6vw, 4rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.05;
+      text-transform: lowercase;
+      margin-bottom: 1.5rem;
+    }
+
+    .tagline {
+      font-size: clamp(1rem, 1.4vw, 1.125rem);
+      line-height: 1.5;
+      color: var(--text-muted);
+      font-weight: 400;
+      margin-bottom: 2.5rem;
+      max-width: 34rem;
+      text-transform: lowercase;
+    }
+
+    .label {
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0;
+      text-transform: lowercase;
+      color: var(--text-muted);
+      margin-bottom: 0.6rem;
+    }
+
+    .donate-row {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .donate-row.stacked {
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .amount-group {
+      display: inline-flex;
+      gap: 0.5rem;
+    }
+
+    .amount-input,
+    .currency-select {
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--text);
+      background: transparent;
+      border: 1px solid rgba(138, 138, 138, 0.35);
+      border-radius: 8px;
+      padding: 0.5rem 0.75rem;
+      height: 2.4rem;
+      line-height: 1;
+      transition: border-color 0.2s ease;
+    }
+
+    .amount-input {
+      width: 6rem;
+      -moz-appearance: textfield;
+    }
+
+    .amount-input::-webkit-outer-spin-button,
+    .amount-input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    .amount-input:focus,
+    .currency-select:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+
+    .currency-select {
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      padding-right: 1.8rem;
+      cursor: pointer;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238a8a8a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'/></svg>");
+      background-repeat: no-repeat;
+      background-position: right 0.55rem center;
+      background-size: 0.85rem;
+    }
+
+    .currency-select option {
+      color: #000;
+      background: #fff;
+    }
+
+    .address {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--accent);
+      text-decoration: none;
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      padding: 0.5rem 0.85rem;
+      background: transparent;
+      border: 1px solid rgba(47, 91, 255, 0.4);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: border-color 0.2s ease, background 0.2s ease;
+    }
+
+    .address:hover {
+      border-color: var(--accent);
+      background: rgba(47, 91, 255, 0.08);
+    }
+
+    .bolt {
+      width: 1em;
+      height: 1em;
+      flex: none;
+    }
+
+.back {
+      margin-top: 2.5rem;
+    }
+
+    .back a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.95rem;
+      text-transform: lowercase;
+      transition: color 0.2s ease;
+    }
+
+    .back a:hover {
+      color: var(--text);
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      padding: 1rem 0;
+      text-transform: lowercase;
+    }
+
+    @media (max-width: 640px) {
+      body {
+        padding: 1.5rem;
+      }
+
+      main {
+        align-items: flex-start;
+        justify-content: center;
+        text-align: left;
+      }
+
+      h1,
+      .tagline,
+      .label,
+      .address,
+      .back a,
+      footer {
+        text-transform: none;
+      }
+
+      h1 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        line-height: 1.05;
+      }
+
+      .tagline {
+        margin-bottom: 2rem;
+      }
+
+      .address {
+        font-size: 0.95rem;
+        padding: 0.5rem 0.75rem;
+      }
+
+      footer {
+        text-align: left;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>donate</h1>
+
+    <p class="tagline">
+      support our work defending digital freedom. every sat helps.
+    </p>
+
+    <p class="label">Bitcoin on-chain</p>
+
+    <form class="donate-row stacked" method="POST" action="https://donate.ipf.dev/api/v1/invoices" target="_blank">
+      <input type="hidden" name="storeId" value="6QbKGKCk614uu65dwGf86RsGn3c9xx7sVhcazcUv2Ue7">
+      <div class="amount-group">
+        <input class="amount-input" type="number" name="price" min="1" step="1" value="500" aria-label="Amount">
+        <select class="currency-select" name="currency" aria-label="Currency">
+          <option value="USD" selected>USD</option>
+          <option value="EUR">EUR</option>
+          <option value="GBP">GBP</option>
+          <option value="BTC">BTC</option>
+        </select>
+      </div>
+      <button type="submit" class="address">
+        <svg class="bolt" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M23.638 14.904c-1.602 6.43-8.113 10.34-14.542 8.736C2.67 22.05-1.244 15.525.362 9.105 1.962 2.67 8.475-1.243 14.9.358c6.43 1.605 10.342 8.115 8.738 14.548v-.002zm-6.35-4.613c.24-1.59-.974-2.45-2.64-3.03l.54-2.153-1.315-.328-.525 2.107c-.345-.087-.705-.167-1.064-.25l.526-2.127-1.32-.33-.54 2.165c-.285-.067-.565-.132-.84-.2l-1.815-.45-.35 1.407s.974.225.955.237c.535.136.63.486.615.766l-.615 2.48c.037.013.074.022.117.038-.033-.008-.067-.015-.101-.025l-.872 3.476c-.076.166-.246.405-.636.308.013.02-.96-.24-.96-.24l-.66 1.51 1.71.426c.32.083.63.165.936.245l-.54 2.19 1.32.327.54-2.17c.36.1.705.19 1.05.273l-.51 2.154 1.32.33.545-2.19c2.24.427 3.93.257 4.64-1.774.57-1.637-.03-2.58-1.217-3.196.854-.193 1.5-.76 1.68-1.93h.01zm-3.01 4.22c-.404 1.64-3.157.75-4.05.53l.72-2.9c.896.23 3.757.67 3.33 2.37zm.41-4.24c-.37 1.49-2.662.735-3.405.55l.654-2.64c.744.18 3.137.524 2.75 2.084v.006z"/>
+        </svg>
+        donate with btcpay
+      </button>
+    </form>
+
+    <p class="label">Bitcoin lightning</p>
+
+    <div class="donate-row">
+      <a class="address" href="lightning:donate@ipf.dev">
+        <svg class="bolt" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/>
+        </svg>
+        donate@ipf.dev
+      </a>
+    </div>
+
+    <p class="label">Get in touch</p>
+
+    <div class="donate-row">
+      <a class="address" href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#105;&#110;&#102;&#111;&#64;&#105;&#112;&#102;&#46;&#100;&#101;&#118;">
+        <svg class="bolt" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+        </svg>
+        info@ipf.dev
+      </a>
+    </div>
+
+    <p class="back">
+      <a href="/">← back to home</a>
+    </p>
+  </main>
+
+  <footer>
+    ©2025-2026 internet privacy foundation
+  </footer>
+</body>
+</html>
