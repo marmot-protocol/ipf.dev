@@ -318,6 +318,10 @@
         </svg>
         donate@ipf.dev
       </a>
+      <button type="button" class="address" data-copy="donate@ipf.dev">
+        <svg class="bolt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        <span>copy address</span>
+      </button>
     </div>
 
     <p class="label">monero</p>
@@ -329,6 +333,10 @@
         </svg>
         donate monero
       </a>
+      <button type="button" class="address" data-copy="4B6QrSjaSnCR5SwZbhD14sEbQ7qqTEqA72Tzh3y8qHhdY2E4yVuRYJrD5NdrTsDSmPj1ZQQgEVHUva5pbnbFDt2mGNRUZTg">
+        <svg class="bolt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        <span>copy address</span>
+      </button>
     </div>
 
     <p class="label">credit card</p>
@@ -350,5 +358,16 @@
   <footer>
     ©2025-2026 internet privacy foundation
   </footer>
+  <script>
+    document.querySelectorAll('[data-copy]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var label = btn.querySelector('span');
+        navigator.clipboard.writeText(btn.dataset.copy).then(function () {
+          label.textContent = 'copied';
+          setTimeout(function () { label.textContent = 'copy address'; }, 2000);
+        });
+      });
+    });
+  </script>
 </body>
 </html>
